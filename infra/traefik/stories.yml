@@ -1,0 +1,11 @@
+http:
+  routers:
+    stories:
+      rule: PathPrefix(`/stories/`) && !(Path(`/stories/new`) || PathPrefix(`/stories/new/`))
+      priority: 110
+      entryPoints: [websecure]
+      service: storage
+      middlewares: [security, private]
+      tls: {}
+  services:
+    storage: {loadBalancer: {passHostHeader: true, servers: [{url: 'http://rustfs:9000'}]}}

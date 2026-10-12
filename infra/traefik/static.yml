@@ -1,0 +1,20 @@
+entryPoints:
+  web:
+    address: ':80'
+    http:
+      redirections:
+        entryPoint: {to: websecure, scheme: https}
+  websecure:
+    address: ':443'
+    http3: {}
+    transport:
+      respondingTimeouts: {readTimeout: 90s, writeTimeout: 90s, idleTimeout: 90s}
+providers:
+  file: {filename: /etc/traefik/dynamic.yml, watch: false}
+accessLog:
+  format: json
+  fields:
+    defaultMode: drop
+    names: {StartUTC: keep, Duration: keep, DownstreamStatus: keep, RouterName: keep, ServiceName: keep, RequestMethod: keep, RequestProtocol: keep}
+    headers: {defaultMode: drop}
+log: {level: WARN, format: json}

@@ -1,0 +1,47 @@
+:root {
+  --insta-hydration-fallback-delay: 5s;
+}
+[data-insta-hydration-reveal] {
+  position: fixed;
+  inset: 0;
+  background: var(--ui-surface-panel, #fff);
+  pointer-events: none;
+  z-index: calc(var(--ui-layer-dialog, 101) + 1);
+  opacity: 1;
+  transition: opacity var(--ui-transition-duration, 120ms) ease-out;
+  animation: insta-hydration-reveal var(--ui-transition-duration, 120ms)
+    ease-out var(--insta-hydration-fallback-delay) forwards;
+}
+[data-insta-hydration-reveal][data-ready="true"] {
+  animation: none;
+  opacity: 0;
+}
+@keyframes insta-hydration-reveal {
+  to {
+    opacity: 0;
+  }
+}
+@media (scripting: enabled) {
+  html:has([data-insta-hydration-reveal][data-ready="false"]),
+  body:has([data-insta-hydration-reveal][data-ready="false"]) {
+    animation: insta-hydration-scroll-lock var(--insta-hydration-fallback-delay)
+      step-end;
+  }
+}
+@keyframes insta-hydration-scroll-lock {
+  from,
+  to {
+    overflow: hidden;
+  }
+}
+@media (scripting: none) {
+  [data-insta-hydration-reveal] {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-insta-hydration-reveal] {
+    transition: none;
+    animation-duration: 0s;
+  }
+}

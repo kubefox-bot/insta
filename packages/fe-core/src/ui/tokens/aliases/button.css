@@ -1,0 +1,50 @@
+:root {
+  /* primary */
+  --button-primary-bg: var(--color-terrakota-400);
+  --button-primary-bg-hover: var(--color-terrakota-300);
+  --button-primary-bg-focused: var(--color-terrakota-300);
+  --button-primary-bg-pressed: var(--color-terrakota-200);
+  --button-primary-bg-disabled: var(--color-neutral-800);
+
+  --button-primary-border-focused: 2px solid var(--color-terrakota-400);
+
+  --button-primary-color: var(--color-neutral-1000);
+  --button-primary-color-disabled: var(--color-neutral-400);
+
+  /* secondary */
+  --button-secondary-border: 1px solid var(--color-terrakota-400);
+  --button-secondary-border-hover: 1px solid var(--color-terrakota-300);
+  --button-secondary-border-focused: 2px solid var(--color-terrakota-300);
+  --button-secondary-border-pressed: 1px solid var(--color-terrakota-200);
+  --button-secondary-border-disabled: 1px solid var(--color-neutral-300);
+
+  --button-secondary-color: var(--color-terrakota-400);
+  --button-secondary-color-hover: var(--color-terrakota-300);
+  --button-secondary-color-focused: var(--color-terrakota-300);
+  --button-secondary-color-pressed: var(--color-terrakota-200);
+  --button-secondary-color-disabled: var(--color-neutral-300);
+
+  /* text */
+  --button-text-color: var(--color-terrakota-400);
+  --button-text-color-hover: var(--color-terrakota-300);
+  --button-text-color-focused: var(--color-terrakota-300);
+  --button-text-color-pressed: var(--color-terrakota-200);
+  --button-text-color-disabled: var(--color-neutral-300);
+
+  /* common */
+  --ui-button-padding-x-lg: 1.5rem;
+  --ui-button-padding-x-md: 1rem;
+  --ui-button-padding-x-sm: 1rem;
+
+  --ui-button-padding-y-lg: 0.75rem;
+  --ui-button-padding-y-md: 0.75rem;
+  --ui-button-padding-y-sm: 0.625rem;
+
+  --ui-button-section-size-lg: 1.5rem;
+  --ui-button-section-size-md: 1.25rem;
+  --ui-button-section-size-sm: 1rem;
+
+  --ui-button-font-lg: var(--font-body-medium-l);
+  --ui-button-font-md: var(--font-body-medium-m);
+  --ui-button-font-sm: var(--font-body-medium-s);
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@insta/contracts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./auth": "./src/auth/index.ts",
+    "./directory": "./src/directory/index.ts",
+    "./http": "./src/http/index.ts",
+    "./messages": "./src/messages/index.ts",
+    "./stories": "./src/stories/index.ts",
+    "./realtime": "./src/realtime/index.ts",
+    "./privacy": "./src/privacy/index.ts",
+    "./errors": "./src/errors/index.ts"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
+  },
+  "scripts": {
+    "check": "bun ../../node_modules/typescript/bin/tsc --noEmit -p tsconfig.json"
+  }
+}

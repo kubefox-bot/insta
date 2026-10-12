@@ -1,0 +1,9 @@
+.heading {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-2);
+}
+.heading h1 {
+  margin: 0;
+  font: var(--font-heading-s);
+}

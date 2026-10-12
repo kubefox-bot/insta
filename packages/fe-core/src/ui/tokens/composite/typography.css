@@ -1,0 +1,46 @@
+:root {
+  --font-heading-xxl:
+    var(--font-weight-heading) var(--font-size-heading-xxl) /
+    var(--line-height-heading-xxl) var(--font-family-heading);
+  --font-heading-xl:
+    var(--font-weight-heading) var(--font-size-heading-xl) /
+    var(--line-height-heading-xl) var(--font-family-heading);
+  --font-heading-l:
+    var(--font-weight-heading) var(--font-size-heading-l) /
+    var(--line-height-heading-l) var(--font-family-heading);
+  --font-heading-m:
+    var(--font-weight-heading) var(--font-size-heading-m) /
+    var(--line-height-heading-m) var(--font-family-heading);
+  --font-heading-s:
+    var(--font-weight-heading) var(--font-size-heading-s) /
+    var(--line-height-heading-s) var(--font-family-heading);
+  --font-heading-xs:
+    var(--font-weight-heading) var(--font-size-heading-xs) /
+    var(--line-height-heading-xs) var(--font-family-heading);
+
+  --font-body-regular-l:
+    var(--font-weight-body-regular) var(--font-size-body-l) /
+    var(--line-height-body-l) var(--font-family-body);
+  --font-body-regular-m:
+    var(--font-weight-body-regular) var(--font-size-body-m) /
+    var(--line-height-body-m) var(--font-family-body);
+  --font-body-regular-s:
+    var(--font-weight-body-regular) var(--font-size-body-s) /
+    var(--line-height-body-s) var(--font-family-body);
+  --font-body-regular-xs:
+    var(--font-weight-body-regular) var(--font-size-body-xs) /
+    var(--line-height-body-xs) var(--font-family-body);
+
+  --font-body-medium-l:
+    var(--font-weight-body-medium) var(--font-size-body-l) /
+    var(--line-height-body-l) var(--font-family-body);
+  --font-body-medium-m:
+    var(--font-weight-body-medium) var(--font-size-body-m) /
+    var(--line-height-body-m) var(--font-family-body);
+  --font-body-medium-s:
+    var(--font-weight-body-medium) var(--font-size-body-s) /
+    var(--line-height-body-s) var(--font-family-body);
+  --font-body-medium-xs:
+    var(--font-weight-body-medium) var(--font-size-body-xs) /
+    var(--line-height-body-xs) var(--font-family-body);
+}

@@ -1,0 +1,97 @@
+{
+  "sourceRoot": ".",
+  "layers": [
+    {
+      "name": "packages",
+      "root": "packages",
+      "allow": []
+    },
+    {
+      "name": "frontend",
+      "root": "apps/fe-insta",
+      "allow": ["packages"]
+    },
+    {
+      "name": "backend",
+      "root": "apps/be-insta",
+      "allow": ["packages"]
+    },
+    {
+      "name": "infra",
+      "root": "infra",
+      "allow": ["frontend", "backend", "packages"]
+    },
+    {
+      "name": "infra-commands",
+      "root": "scripts/infra",
+      "allow": ["infra", "frontend", "backend", "packages"]
+    }
+  ],
+  "moduleGroups": [
+    {
+      "root": "packages",
+      "publicEntrypoints": [
+        "src/index.ts",
+        "browser/index.ts",
+        "server/index.ts",
+        "types/index.ts",
+        "src/git/commit-message/index.ts",
+        "src/auth/index.ts",
+        "src/directory/index.ts",
+        "src/http/index.ts",
+        "src/messages/index.ts",
+        "src/stories/index.ts",
+        "src/webm/index.ts",
+        "src/realtime/index.ts",
+        "src/observability/browser/index.ts",
+        "src/observability/server/index.ts",
+        "src/dragonfly/server/index.ts",
+        "src/lifecycle/server/index.ts",
+        "src/observability/business/index.ts",
+        "src/observability/otel/index.ts",
+        "src/observability/contracts/index.ts",
+        "src/privacy/index.ts",
+        "src/observability/analytics/index.ts",
+        "src/tokens/styles.css",
+        "src/ui/index.ts",
+        "src/ui/tokens/styles.css",
+        "src/ui/tokens/breakpoints/index.ts",
+        "src/ui/build/index.ts",
+        "src/ui/icons/index.ts",
+        "src/dates/index.ts",
+        "src/errors/index.ts"
+      ],
+      "forbidCycles": true
+    }
+  ],
+  "forbiddenDependencies": [
+    {
+      "source": "packages/contracts/**",
+      "target": "apps/**"
+    },
+    {
+      "source": "infra/**",
+      "target": "apps/be-insta/src/lib/dragonfly/bootstrap.ts"
+    },
+    {
+      "source": "infra/**",
+      "target": "apps/fe-insta/src/lib/observability/client/conts.ts"
+    },
+    {
+      "source": "infra/**",
+      "target": "apps/fe-insta/src/lib/observability/client/schema.ts"
+    },
+    {
+      "source": "packages/media-recorder/**",
+      "target": "apps/**"
+    },
+    {
+      "source": "apps/fe-insta/src/**",
+      "target": "packages/fe-core/src/ui/build/**"
+    },
+    {
+      "source": "packages/ui-kit/src/**",
+      "target": "packages/fe-core/src/ui/build/**"
+    }
+  ]
+}

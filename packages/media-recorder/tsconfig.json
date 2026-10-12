@@ -1,0 +1,4 @@
+{
+  "extends": "../fe-core/tsconfig.json",
+  "include": ["src/**/*.ts", "__tests__/**/*.ts"]
+}

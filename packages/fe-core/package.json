@@ -1,0 +1,63 @@
+{
+  "name": "@insta/fe-core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./lints": "./src/index.ts",
+    "./biome": "./biome.json",
+    "./tsconfig": "./tsconfig.base.json",
+    "./git/commit-message": "./src/git/commit-message/index.ts",
+    "./observability/browser": "./src/observability/browser/index.ts",
+    "./observability/server": {
+      "browser": "./src/observability/browser/server-unavailable.ts",
+      "default": "./src/observability/server/index.ts"
+    },
+    "./observability/business": "./src/observability/business/index.ts",
+    "./observability/analytics": "./src/observability/analytics/index.ts",
+    "./observability/otel": "./src/observability/otel/index.ts",
+    "./observability/contracts": "./src/observability/contracts/index.ts",
+    "./ui": "./src/ui/index.ts",
+    "./ui/styles.css": "./src/ui/tokens/styles.css",
+    "./ui/breakpoints": "./src/ui/tokens/breakpoints/index.ts",
+    "./ui/build": "./src/ui/build/index.ts",
+    "./ui/icons": "./src/ui/icons/index.ts",
+    "./dates": "./src/dates/index.ts",
+    "./dragonfly/server": {
+      "browser": "./src/dragonfly/server/unavailable.js",
+      "default": "./src/dragonfly/server/index.ts"
+    },
+    "./lifecycle/server": {
+      "browser": "./src/lifecycle/server/unavailable.js",
+      "default": "./src/lifecycle/server/index.ts"
+    }
+  },
+  "bin": {
+    "insta-lints": "./bin/insta-lints"
+  },
+  "engines": {
+    "bun": ">=1.4.2"
+  },
+  "dependencies": {
+    "@bloodyowl/boxed": "3.4.0",
+    "@opentelemetry/api": "1.9.1",
+    "@opentelemetry/context-async-hooks": "2.12.0",
+    "@opentelemetry/core": "2.12.0",
+    "@opentelemetry/sdk-trace-node": "2.12.0",
+    "pino": "10.4.0",
+    "svelte": "5.57.2",
+    "typescript": "7.0.2",
+    "zod": "4.6.5",
+    "bits-ui": "2.19.5",
+    "lightningcss": "1.33.0"
+  },
+  "scripts": {
+    "lint": "biome check .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "bun test --timeout 30000",
+    "build": "bun build ./src/index.ts ./src/cli.ts --outdir=dist --entry-naming='[name].[ext]' --format=esm --target=bun --external=@bloodyowl/boxed --external=typescript --external='typescript/*' && tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "vite": "8.3.3"
+  }
+}

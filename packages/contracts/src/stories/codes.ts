@@ -1,0 +1,15 @@
+export enum StoryErrorCode {
+  ActiveLimit = "ACTIVE_LIMIT",
+  UploadCancelled = "UPLOAD_CANCELLED",
+  UploadPending = "UPLOAD_PENDING",
+  InvalidUpload = "INVALID_UPLOAD",
+  StoryNotFound = "STORY_NOT_FOUND",
+  UnsupportedMedia = "UNSUPPORTED_MEDIA",
+  MalformedMedia = "MALFORMED_MEDIA",
+  DurationUnprovable = "DURATION_UNPROVABLE",
+  FileTooLarge = "FILE_TOO_LARGE",
+  TooLong = "TOO_LONG",
+  Deadline = "DEADLINE",
+  Busy = "BUSY",
+  InspectorUnavailable = "INSPECTOR_UNAVAILABLE",
+}

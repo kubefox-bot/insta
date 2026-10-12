@@ -1,0 +1,26 @@
+{
+  "name": "@insta/ui-kit",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/tokens/styles.css"
+  },
+  "peerDependencies": {
+    "svelte": "5.57.2"
+  },
+  "dependencies": {
+    "@insta/fe-core": "workspace:*"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "vite": "8.3.3",
+    "svelte-check": "4.7.6",
+    "typescript": "6.0.3",
+    "lightningcss": "1.33.0"
+  },
+  "scripts": {
+    "check": "bun --bun svelte-check --tsconfig ./tsconfig.json"
+  }
+}

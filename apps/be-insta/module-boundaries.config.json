@@ -1,0 +1,84 @@
+{
+  "sourceRoot": ".",
+  "layers": [
+    {
+      "name": "domains",
+      "root": "apps/be-insta/src/domains",
+      "allow": ["packages", "lib"]
+    },
+    {
+      "name": "lib",
+      "root": "apps/be-insta/src/lib",
+      "allow": ["packages"]
+    },
+    {
+      "name": "app",
+      "root": "apps/be-insta/src/app",
+      "allow": ["domains", "lib", "packages"]
+    },
+    {
+      "name": "routes",
+      "root": "apps/be-insta/src/routes",
+      "allow": ["domains", "lib", "packages"]
+    },
+    {
+      "name": "packages",
+      "root": "packages",
+      "allow": []
+    }
+  ],
+  "moduleGroups": [
+    {
+      "root": "apps/be-insta/src/app/docs",
+      "publicEntrypoints": ["index.ts"],
+      "forbidCycles": true
+    },
+    {
+      "root": "apps/be-insta/src/domains",
+      "publicEntrypoints": [
+        "browser/index.ts",
+        "server/index.ts",
+        "index.ts",
+        "http/index.ts",
+        "http/server.ts"
+      ],
+      "forbidCycles": true
+    },
+    {
+      "root": "apps/be-insta/src/app/composition",
+      "publicEntrypoints": ["index.ts"],
+      "forbidCycles": true
+    },
+    {
+      "root": "apps/be-insta/src/app/health",
+      "publicEntrypoints": ["index.ts"],
+      "forbidCycles": true
+    }
+  ],
+  "forbiddenDependencies": [
+    {
+      "source": "apps/be-insta/src/domains/**/domain/**",
+      "target": "apps/be-insta/src/domains/**/adapters/**"
+    },
+    {
+      "source": "apps/be-insta/src/domains/**/use-cases/**",
+      "target": "apps/be-insta/src/domains/**/adapters/**"
+    },
+    {
+      "source": "apps/be-insta/src/domains/**",
+      "target": "apps/be-insta/src/routes/**"
+    },
+    {
+      "source": "apps/be-insta/src/domains/**",
+      "target": "apps/be-insta/src/app/**"
+    },
+    {
+      "source": "apps/be-insta/src/domains/**/domain/**",
+      "target": "apps/be-insta/src/lib/**"
+    },
+    {
+      "source": "apps/be-insta/src/domains/**/use-cases/**",
+      "target": "apps/be-insta/src/lib/**"
+    }
+  ]
+}

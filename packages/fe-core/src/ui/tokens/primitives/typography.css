@@ -1,0 +1,30 @@
+:root {
+  --font-family-heading: var(--font-inter, "Inter", sans-serif);
+  --font-family-body: var(--font-inter, "Inter", sans-serif);
+
+  --font-weight-heading: 500;
+  --font-weight-body-regular: 400;
+  --font-weight-body-medium: 500;
+
+  --font-size-heading-xxl: 4rem;
+  --font-size-heading-xl: 3rem;
+  --font-size-heading-l: 2.5rem;
+  --font-size-heading-m: 2rem;
+  --font-size-heading-s: 1.5rem;
+  --font-size-heading-xs: 1.25rem;
+  --font-size-body-l: 1.125rem;
+  --font-size-body-m: 1rem;
+  --font-size-body-s: 0.825rem;
+  --font-size-body-xs: 0.75rem;
+
+  --line-height-heading-xxl: 4.5rem;
+  --line-height-heading-xl: 3.75rem;
+  --line-height-heading-l: 3rem;
+  --line-height-heading-m: 2.5rem;
+  --line-height-heading-s: 2rem;
+  --line-height-heading-xs: 1.75rem;
+  --line-height-body-l: 1.75rem;
+  --line-height-body-m: 1.5rem;
+  --line-height-body-s: 1.25rem;
+  --line-height-body-xs: 1rem;
+}

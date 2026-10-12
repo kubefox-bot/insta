@@ -1,0 +1,12 @@
+.root {
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  flex: none;
+  width: var(--ui-avatar-size);
+  height: var(--ui-avatar-size);
+  border-radius: 50%;
+  font: var(--font-body-medium-m);
+  line-height: 1;
+  user-select: none;
+}

@@ -1,0 +1,30 @@
+.icon {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: none;
+}
+.flag {
+  width: 1.5rem;
+  height: 1rem;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--ui-border);
+}
+.icon[data-size="sm"] {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+.icon[data-size="md"] {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+.icon[data-size="lg"] {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+.icon[data-tone="muted"] {
+  color: var(--ui-text-muted);
+}
+.icon[data-tone="error"] {
+  color: var(--ui-text-error);
+}

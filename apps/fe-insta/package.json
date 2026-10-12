@@ -1,0 +1,43 @@
+{
+  "name": "@insta/fe-insta",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@sveltejs/kit": "3.0.1",
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "svelte": "5.57.2",
+    "svelte-check": "4.7.6",
+    "vite": "8.3.3",
+    "lightningcss": "1.33.0",
+    "typescript": "6.0.3",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "@sveltejs/adapter-bun": "1.0.0"
+  },
+  "scripts": {
+    "dev": "bun --bun vite dev --host 127.0.0.1",
+    "build": "bun --bun vite build && bun build src/app/observability/server/preload.ts --outdir dist --entry-naming=observability-preload.[ext] --target bun --packages external",
+    "start": "bun --preload ./dist/observability-preload.js dist/index.js",
+    "check": "bun --bun svelte-kit sync && bun --bun svelte-check --tsgo --tsconfig ./tsconfig.json",
+    "test:unit": "cd ../.. && bun test apps/fe-insta/__tests__/continuation apps/fe-insta/__tests__/users/dialog.test.ts apps/fe-insta/__tests__/users/session-snapshot.test.ts apps/fe-insta/__tests__/users/registration-username.test.ts apps/fe-insta/__tests__/conversations/scroll.test.ts apps/fe-insta/__tests__/support apps/fe-insta/__tests__/outbox/composer-copy.test.ts apps/fe-insta/__tests__/outbox/conversation-id.test.ts apps/fe-insta/__tests__/receipts apps/fe-insta/src/domains/users/components/UserSearch/__tests__ apps/fe-insta/src/domains/conversations/components/Composer/__tests__ apps/fe-insta/src/domains/auth-continuation/browser/recovery/selection/__tests__ apps/fe-insta/src/domains/stories/browser/creation-session/__tests__ apps/fe-insta/src/domains/stories/browser/creation-navigation/__tests__ apps/fe-insta/src/domains/stories/browser/creation-departure/__tests__ apps/fe-insta/src/domains/stories/browser/realtime/__tests__ apps/fe-insta/src/domains/stories/browser/feed/__tests__ apps/fe-insta/src/domains/stories/browser/lib/expiry/__tests__ apps/fe-insta/src/domains/conversations/browser/outbox/adapters/lib/indexed-db/__tests__ --timeout 30000",
+    "test:compiler": "cd ../.. && bun test apps/fe-insta/__tests__/stories/recorder-presentation.test.ts apps/fe-insta/__tests__/users/account-navigation.test.ts apps/fe-insta/__tests__/conversations/presentation.test.ts apps/fe-insta/__tests__/outbox/issue-page.test.ts --timeout 30000",
+    "test:config": "cd ../.. && bun test apps/fe-insta/__tests__/config --timeout 30000"
+  },
+  "dependencies": {
+    "@bloodyowl/boxed": "3.4.0",
+    "@grafana/faro-web-sdk": "2.12.1",
+    "@insta/contracts": "workspace:*",
+    "@insta/fe-core": "workspace:*",
+    "@internationalized/date": "3.12.4",
+    "@opentelemetry/api": "1.9.1",
+    "bits-ui": "2.19.5",
+    "intl-messageformat": "12.1.3",
+    "jose": "6.2.12",
+    "ky": "2.1.0",
+    "mongodb": "7.7.0",
+    "socket.io-client": "4.8.4",
+    "zod": "4.6.5",
+    "@insta/ui-kit": "workspace:*",
+    "@insta/media-recorder": "workspace:*"
+  }
+}

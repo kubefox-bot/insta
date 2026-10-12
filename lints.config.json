@@ -1,0 +1,27 @@
+{
+  "preset": "module-style",
+  "sourceRoot": ".",
+  "mode": "warn",
+  "environmentFiles": [
+    "apps/be-insta/src/lib/config/read.ts",
+    "apps/fe-insta/src/lib/config/server/read.ts",
+    "apps/fe-insta/src/lib/config/server/continuation.ts",
+    "infra/dragonfly/config.ts",
+    "scripts/infra/config.ts",
+    "__tests__/fixtures/environment.ts",
+    "__tests__/fixtures/auth05/config.ts",
+    "apps/be-insta/__tests__/compatibility/config.ts",
+    "__tests__/fixtures/realtime/config.ts",
+    "apps/be-insta/src/lib/config/telemetry.ts",
+    "apps/fe-insta/src/lib/config/server/telemetry.ts",
+    "infra/otel/config.ts",
+    "scripts/testing/config.ts",
+    "__tests__/fixtures/media/config.ts",
+    "__tests__/fixtures/stories/config.ts",
+    "__tests__/config/fixtures/frontend-liveness/config.ts",
+    "scripts/infra/host/config.ts",
+    "apps/fe-insta/config/host-dev/read.ts",
+    "scripts/infra/verification/config.ts",
+    "scripts/testing/browser/config.ts"
+  ]
+}

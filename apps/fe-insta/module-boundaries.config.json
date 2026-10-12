@@ -1,0 +1,119 @@
+{
+  "sourceRoot": ".",
+  "layers": [
+    {
+      "name": "domains",
+      "root": "apps/fe-insta/src/domains",
+      "allow": ["packages", "lib"]
+    },
+    {
+      "name": "lib",
+      "root": "apps/fe-insta/src/lib",
+      "allow": ["packages"]
+    },
+    {
+      "name": "app",
+      "root": "apps/fe-insta/src/app",
+      "allow": ["domains", "lib", "packages", "shared"]
+    },
+    {
+      "name": "routes",
+      "root": "apps/fe-insta/src/routes",
+      "allow": ["domains", "lib", "packages", "shared", "app"]
+    },
+    {
+      "name": "packages",
+      "root": "packages",
+      "allow": []
+    },
+    {
+      "name": "shared",
+      "root": "apps/fe-insta/src/shared",
+      "allow": ["lib", "packages"]
+    },
+    {
+      "name": "build-config",
+      "root": "apps/fe-insta/config",
+      "allow": []
+    }
+  ],
+  "moduleGroups": [
+    {
+      "root": "apps/fe-insta/src/domains",
+      "publicEntrypoints": [
+        "browser/index.ts",
+        "browser/state/index.ts",
+        "browser/realtime/index.ts",
+        "server/index.ts",
+        "index.ts",
+        "server/targets/index.ts",
+        "server/session/index.ts",
+        "browser/search/index.ts"
+      ],
+      "forbidCycles": true
+    },
+    {
+      "root": "apps/fe-insta/src/lib/session",
+      "publicEntrypoints": [
+        "index.ts",
+        "cookies.ts",
+        "authorized.ts",
+        "lifecycle.ts",
+        "contracts/index.ts"
+      ],
+      "forbidCycles": true
+    },
+    {
+      "root": "apps/fe-insta/src/app",
+      "publicEntrypoints": [
+        "browser/index.ts",
+        "server/index.ts",
+        "server/client-source/index.ts",
+        "server/intake/index.ts",
+        "server/limits/index.ts",
+        "server/session/index.ts",
+        "server/database/index.ts"
+      ],
+      "forbidCycles": true
+    },
+    {
+      "root": "apps/fe-insta/src/lib/browser-synchronization",
+      "publicEntrypoints": ["index.ts"],
+      "forbidCycles": true
+    }
+  ],
+  "forbiddenDependencies": [
+    {
+      "source": "apps/fe-insta/src/domains/**/domain/**",
+      "target": "apps/fe-insta/src/domains/**/adapters/**"
+    },
+    {
+      "source": "apps/fe-insta/src/domains/**/use-cases/**",
+      "target": "apps/fe-insta/src/domains/**/adapters/**"
+    },
+    {
+      "source": "apps/fe-insta/src/domains/**",
+      "target": "apps/fe-insta/src/routes/**"
+    },
+    {
+      "source": "apps/fe-insta/src/domains/**",
+      "target": "apps/fe-insta/src/app/**"
+    },
+    {
+      "source": "apps/fe-insta/src/domains/**/domain/**",
+      "target": "apps/fe-insta/src/lib/**"
+    },
+    {
+      "source": "apps/fe-insta/src/domains/**/use-cases/**",
+      "target": "apps/fe-insta/src/lib/**"
+    },
+    {
+      "source": "apps/fe-insta/src/lib/session/server/domain/**",
+      "target": "apps/fe-insta/src/lib/session/server/adapters/**"
+    },
+    {
+      "source": "apps/fe-insta/src/lib/session/server/use-cases/**",
+      "target": "apps/fe-insta/src/lib/session/server/adapters/**"
+    }
+  ]
+}

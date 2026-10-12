@@ -1,0 +1,78 @@
+{
+  "sourceRoot": "packages/contracts",
+  "layers": [
+    {
+      "name": "directory",
+      "root": "packages/contracts/src/directory",
+      "allow": []
+    },
+    {
+      "name": "auth",
+      "root": "packages/contracts/src/auth",
+      "allow": []
+    },
+    {
+      "name": "http",
+      "root": "packages/contracts/src/http",
+      "allow": []
+    },
+    {
+      "name": "messages",
+      "root": "packages/contracts/src/messages",
+      "allow": []
+    },
+    {
+      "name": "stories",
+      "root": "packages/contracts/src/stories",
+      "allow": []
+    },
+    {
+      "name": "realtime",
+      "root": "packages/contracts/src/realtime",
+      "allow": ["http", "messages", "auth"]
+    },
+    {
+      "name": "privacy",
+      "root": "packages/contracts/src/privacy",
+      "allow": []
+    },
+    {
+      "name": "errors",
+      "root": "packages/contracts/src/errors",
+      "allow": [
+        "auth",
+        "http",
+        "messages",
+        "stories",
+        "realtime",
+        "directory",
+        "support",
+        "continuation",
+        "privacy"
+      ]
+    },
+    {
+      "name": "support",
+      "root": "packages/contracts/src/support",
+      "allow": []
+    },
+    {
+      "name": "continuation",
+      "root": "packages/contracts/src/continuation",
+      "allow": []
+    }
+  ],
+  "moduleGroups": [
+    {
+      "root": "packages/contracts/src",
+      "publicEntrypoints": ["index.ts"],
+      "forbidCycles": true
+    }
+  ],
+  "forbiddenDependencies": [
+    {
+      "source": "packages/contracts/**",
+      "target": "apps/**"
+    }
+  ]
+}

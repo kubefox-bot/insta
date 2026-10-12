@@ -1,0 +1,16 @@
+.trigger {
+  max-width: 100%;
+}
+.settings {
+  padding: var(--ui-space-4);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-panel);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-3);
+}
+.choice {
+  flex: 1 1 12rem;
+}

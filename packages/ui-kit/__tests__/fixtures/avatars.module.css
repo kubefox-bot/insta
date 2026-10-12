@@ -1,0 +1,19 @@
+.fixtures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-2);
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-2);
+  width: 100%;
+  min-width: 0;
+  color: var(--ui-text);
+}
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}

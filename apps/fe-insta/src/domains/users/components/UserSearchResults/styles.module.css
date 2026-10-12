@@ -1,0 +1,28 @@
+.results {
+  list-style: none;
+  padding: 0;
+  margin: var(--ui-space-2) 0 0;
+}
+.choice {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  gap: var(--ui-space-3);
+}
+.choice:hover {
+  background: var(--ui-surface-muted);
+}
+.username {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.message {
+  color: var(--ui-text-muted);
+  overflow-wrap: anywhere;
+}
+.error {
+  color: var(--ui-text-error);
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.14/schema.json",
+  "extends": ["./packages/fe-core/biome.json"],
+  "files": {
+    "ignoreUnknown": true,
+    "includes": [
+      "!**/.superpowers",
+      "!**/.worktrees",
+      "!**/dist",
+      "!**/node_modules",
+      "!**/.svelte-kit",
+      "!apps/fe-insta/src/lib/api/generated",
+      "!.infra",
+      "!.superpowers",
+      "!.worktrees",
+      "!infra/certs",
+      "!test-results"
+    ]
+  },
+  "html": {
+    "experimentalFullSupportEnabled": true
+  },
+  "overrides": [
+    {
+      "includes": ["apps/be-insta/**/*.ts"],
+      "javascript": {
+        "parser": {
+          "unsafeParameterDecoratorsEnabled": true
+        }
+      },
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useHookAtTopLevel": {
+              "level": "error",
+              "options": {
+                "ignore": ["useGlobalPipes", "useGlobalFilters"]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "apps/fe-insta/vite.config.ts",
+        "packages/ui-kit/__tests__/fixtures/vite.config.ts",
+        "apps/fe-insta/__tests__/browser/dates/fixtures/vite.config.ts",
+        "apps/fe-insta/__tests__/browser/marks/fixtures/vite.config.ts"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["apps/fe-insta/src/lib/api/server/transport.server.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "__tests__/e2e/playwright.config.ts",
+        "packages/ui-kit/__tests__/browser/playwright.config.ts",
+        "apps/fe-insta/__tests__/browser/dates/playwright.config.ts",
+        "apps/fe-insta/__tests__/browser/marks/playwright.config.ts"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ]
+}

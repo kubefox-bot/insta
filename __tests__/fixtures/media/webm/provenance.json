@@ -1,0 +1,48 @@
+{
+  "source": "Synthetic native MediaRecorder AV from measured2026-10-11 preflight; no physical devices, no codec transcode",
+  "preflight": ".infra/stories-webm-preflight/report.md",
+  "records": [
+    {
+      "file": "chrome-vp8.webm",
+      "source": "chrome-slice-short-publicinfo-fixed.webm",
+      "browser": "Chrome155.0.8059.39",
+      "bytes": 39562,
+      "sha256": "6c30d55cf011ba1f2f0859ae0231166aae14b59ddebe7034846506675a1ffd5d"
+    },
+    {
+      "file": "msedge-vp8.webm",
+      "source": "msedge-short-original.webm",
+      "browser": "Edge155.0.4283.45",
+      "bytes": 40288,
+      "sha256": "4e48c78e92ce3cc4cd64ffcb1c7ac258a4066969d048737bc1bd7aa2455474d4"
+    },
+    {
+      "file": "chrome-vp9.webm",
+      "source": "chrome-slice-vp9-publicinfo-fixed.webm",
+      "browser": "Chrome155.0.8059.39",
+      "bytes": 39396,
+      "sha256": "abdd798295a8aba7200b18596fc4247334f24e8e679ec689a3ddfef57357306c"
+    },
+    {
+      "file": "msedge-vp9.webm",
+      "source": "msedge-vp9-original.webm",
+      "browser": "Edge155.0.4283.45",
+      "bytes": 39508,
+      "sha256": "5c07dc88837092b21d7c6fae0043228ce395d0da34c86f3e8ce75623272c72dd"
+    },
+    {
+      "file": "long-video-forged.webm",
+      "source": "chrome-long-video-short-audio-forged.webm",
+      "browser": "Chrome155.0.8059.39",
+      "bytes": 746954,
+      "sha256": "462cd8a0b188df8c4b43dfe0ab6e167b2f0081aea5bf55bb61b33468d2a3f315"
+    },
+    {
+      "file": "chrome-margin.webm",
+      "source": "chrome-slice-margin14800-publicinfo-fixed.webm",
+      "browser": "Chrome155.0.8059.39",
+      "bytes": 888994,
+      "sha256": "905b2a6a7b2b64174582894e230fe5bd034ccb967482f5ace9ded900ef3cf06b"
+    }
+  ]
+}

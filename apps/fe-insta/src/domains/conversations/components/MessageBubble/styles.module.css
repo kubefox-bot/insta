@@ -1,0 +1,20 @@
+.bubble {
+  max-width: min(85%, 36rem);
+  min-width: 0;
+  justify-self: start;
+  padding: var(--ui-space-2) var(--ui-space-3) var(--ui-space-1);
+  color: var(--ui-text);
+  background: var(--ui-message-incoming);
+  border-radius: var(--ui-radius-panel);
+  border-bottom-left-radius: 0;
+}
+.bubble[data-own="true"] {
+  justify-self: end;
+  background: var(--ui-message-own);
+  border-bottom-left-radius: var(--ui-radius-panel);
+  border-bottom-right-radius: 0;
+}
+.text {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}

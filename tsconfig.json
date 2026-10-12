@@ -1,0 +1,44 @@
+{
+  "extends": "./packages/fe-core/tsconfig.json",
+  "compilerOptions": {
+    "types": ["bun"],
+    "paths": {
+      "@bloodyowl/boxed": ["./node_modules/@bloodyowl/boxed"],
+      "$lib/*": ["./apps/fe-insta/src/lib/*"],
+      "$domains/*": ["./apps/fe-insta/src/domains/*"],
+      "@insta/fe-core/observability/server": [
+        "./packages/fe-core/src/observability/server/index.ts"
+      ],
+      "@insta/fe-core/dragonfly/server": [
+        "./packages/fe-core/src/dragonfly/server/index.ts"
+      ],
+      "@insta/fe-core/lifecycle/server": [
+        "./packages/fe-core/src/lifecycle/server/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "packages/fe-core/src/**/*.ts",
+    "packages/fe-core/__tests__/**/*.ts",
+    "__tests__/architecture/**/*.ts",
+    "__tests__/tooling/**/*.ts",
+    ".lefthook/**/*.ts",
+    "__tests__/contracts/*.test.ts",
+    "tooling/**/*.ts",
+    "packages/contracts/src/**/*.ts",
+    "__tests__/contracts/fixtures/**/*.ts",
+    "__tests__/config/**/*.ts",
+    "__tests__/integration/**/*.ts",
+    "__tests__/fixtures/**/*.ts",
+    "scripts/**/*.ts",
+    "infra/dragonfly/**/*.ts",
+    "apps/fe-insta/src/app.d.ts",
+    "__tests__/observability/**/*.ts",
+    "__tests__/unit/**/*.ts",
+    "__tests__/abuse/**/*.ts",
+    "__tests__/e2e/**/*.ts",
+    "__tests__/reporting/**/*.ts",
+    "packages/media-recorder/src/**/*.ts",
+    "packages/media-recorder/__tests__/**/*.ts"
+  ]
+}

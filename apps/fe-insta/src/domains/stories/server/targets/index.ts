@@ -1,0 +1,1 @@
+export { resolveStoryTarget } from "./resolve";

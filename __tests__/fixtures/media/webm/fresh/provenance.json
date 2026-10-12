@@ -1,0 +1,255 @@
+{
+  "source": "Fresh synthetic native Chrome/Edge MediaRecorder using production createNativeStoryRecorder/finalizer; no physical hardware or codec transcode",
+  "capturedAt": "2026-10-11T06:30:08.015Z",
+  "privateReceipt": ".infra/webm-task4-20261011/captures.json",
+  "records": [
+    {
+      "file": "chrome-vp8-default-short.webm",
+      "channel": "chrome",
+      "browser": "155.0.8059.39",
+      "codec": "vp8",
+      "mode": "default",
+      "target": "short",
+      "elapsedMs": 803.6000000238419,
+      "nativeElapsedMs": 803.6000000238419,
+      "bytes": 45152,
+      "sha256": "6b653cbd6e92f96568ffe62cdc0927021dfb17c17364d12ea72ddafb720bd694"
+    },
+    {
+      "file": "chrome-vp8-default-max.webm",
+      "channel": "chrome",
+      "browser": "155.0.8059.39",
+      "codec": "vp8",
+      "mode": "default",
+      "target": "max",
+      "elapsedMs": 14805.699999988079,
+      "nativeElapsedMs": 14805.699999988079,
+      "bytes": 1138182,
+      "sha256": "5e677899e353c64ed8a7328465d5701e9718e4c444da14d9448e36dc6c88497d"
+    },
+    {
+      "file": "chrome-vp8-streaming-short.webm",
+      "channel": "chrome",
+      "browser": "155.0.8059.39",
+      "codec": "vp8",
+      "mode": "streaming",
+      "target": "short",
+      "elapsedMs": 802.7000000476837,
+      "nativeElapsedMs": 802.7000000476837,
+      "bytes": 47074,
+      "sha256": "ac196541077e92bb23def6d905a33e7c5ef16377fa4a8a461cecc6d7c5395dac"
+    },
+    {
+      "file": "chrome-vp8-streaming-max.webm",
+      "channel": "chrome",
+      "browser": "155.0.8059.39",
+      "codec": "vp8",
+      "mode": "streaming",
+      "target": "max",
+      "elapsedMs": 14803.5,
+      "nativeElapsedMs": 14803.799999952316,
+      "bytes": 1138805,
+      "sha256": "2d3d2e5c321a4dae6b1e6cbdf8abfd230b424b9d46b8c7020d01ad2078b6cd49"
+    },
+    {
+      "file": "chrome-vp9-default-short.webm",
+      "channel": "chrome",
+      "browser": "155.0.8059.39",
+      "codec": "vp9",
+      "mode": "default",
+      "target": "short",
+      "elapsedMs": 809.2000000476837,
+      "nativeElapsedMs": 809.3000000119209,
+      "bytes": 44806,
+      "sha256": "7b324a58b9eadeeeea04f441e76206f345a655eaeb43de165b22ec31a889fb8a"
+    },
+    {
+      "file": "chrome-vp9-default-max.webm",
+      "channel": "chrome",
+      "browser": "155.0.8059.39",
+      "codec": "vp9",
+      "mode": "default",
+      "target": "max",
+      "elapsedMs": 14805.5,
+      "nativeElapsedMs": 14805.600000023842,
+      "bytes": 1348133,
+      "sha256": "3c4e1dcb188f3eeb2752f2b253cdd5457d526fe372f4f29a0c5c34c1b6f4484b"
+    },
+    {
+      "file": "chrome-vp9-streaming-short.webm",
+      "channel": "chrome",
+      "browser": "155.0.8059.39",
+      "codec": "vp9",
+      "mode": "streaming",
+      "target": "short",
+      "elapsedMs": 808.7000000476837,
+      "nativeElapsedMs": 808.7000000476837,
+      "bytes": 44713,
+      "sha256": "f85f4a840675a0c58255382bbaa5a0073d79ef74d95082d5ddfa23ac6648a34f"
+    },
+    {
+      "file": "chrome-vp9-streaming-max.webm",
+      "channel": "chrome",
+      "browser": "155.0.8059.39",
+      "codec": "vp9",
+      "mode": "streaming",
+      "target": "max",
+      "elapsedMs": 14804,
+      "nativeElapsedMs": 14804,
+      "bytes": 1349066,
+      "sha256": "63fccb9c714a0331ad76d48b3a81202369128a52ee983449d4d510bf85bc6898"
+    },
+    {
+      "file": "msedge-vp8-default-short.webm",
+      "channel": "msedge",
+      "browser": "155.0.4283.45",
+      "codec": "vp8",
+      "mode": "default",
+      "target": "short",
+      "elapsedMs": 806.3000000119209,
+      "nativeElapsedMs": 806.5999999642372,
+      "bytes": 43906,
+      "sha256": "70deaab11c8c50d3da2e83b180d778833f819fb9370faded77be03dc0b2aac7b"
+    },
+    {
+      "file": "msedge-vp8-default-max.webm",
+      "channel": "msedge",
+      "browser": "155.0.4283.45",
+      "codec": "vp8",
+      "mode": "default",
+      "target": "max",
+      "elapsedMs": 14804.300000011921,
+      "nativeElapsedMs": 14805.900000035763,
+      "bytes": 1138182,
+      "sha256": "2a35998ac5b1723b19884385d567e17de30e27f8252f1ca5a88c24641e36553c"
+    },
+    {
+      "file": "msedge-vp8-streaming-short.webm",
+      "channel": "msedge",
+      "browser": "155.0.4283.45",
+      "codec": "vp8",
+      "mode": "streaming",
+      "target": "short",
+      "elapsedMs": 801.8000000119209,
+      "nativeElapsedMs": 801.9000000357628,
+      "bytes": 47074,
+      "sha256": "14698b568a6f6c4e61dc45cbd1b63dd59b8c3dc7c2ae5b94c05f6644722499ab"
+    },
+    {
+      "file": "msedge-vp8-streaming-max.webm",
+      "channel": "msedge",
+      "browser": "155.0.4283.45",
+      "codec": "vp8",
+      "mode": "streaming",
+      "target": "max",
+      "elapsedMs": 14800.799999952316,
+      "nativeElapsedMs": 14801,
+      "bytes": 1138805,
+      "sha256": "49839f2d61484286f747279c328127ec4342b8dc95a5caa8ad917869a6b3d4be"
+    },
+    {
+      "file": "msedge-vp9-default-short.webm",
+      "channel": "msedge",
+      "browser": "155.0.4283.45",
+      "codec": "vp9",
+      "mode": "default",
+      "target": "short",
+      "elapsedMs": 806.8000000119209,
+      "nativeElapsedMs": 806.8000000119209,
+      "bytes": 44806,
+      "sha256": "73ef6ed01ce826a1a881ac6f2015bf15082db9bd3abb06c185d8654437eb7596"
+    },
+    {
+      "file": "msedge-vp9-default-max.webm",
+      "channel": "msedge",
+      "browser": "155.0.4283.45",
+      "codec": "vp9",
+      "mode": "default",
+      "target": "max",
+      "elapsedMs": 14800.800000011921,
+      "nativeElapsedMs": 14800.899999976158,
+      "bytes": 1348443,
+      "sha256": "7106efe11667d6c4238afcb8ac535ef5c6f70c107fee837701ea1d5f5093d497"
+    },
+    {
+      "file": "msedge-vp9-streaming-short.webm",
+      "channel": "msedge",
+      "browser": "155.0.4283.45",
+      "codec": "vp9",
+      "mode": "streaming",
+      "target": "short",
+      "elapsedMs": 803.5999999642372,
+      "nativeElapsedMs": 803.6999999880791,
+      "bytes": 44399,
+      "sha256": "11435939bdb3a242b85fbd4fe39111274bb5733c83e1dde8ad0f56337f5208da"
+    },
+    {
+      "file": "msedge-vp9-streaming-max.webm",
+      "channel": "msedge",
+      "browser": "155.0.4283.45",
+      "codec": "vp9",
+      "mode": "streaming",
+      "target": "max",
+      "elapsedMs": 14807.399999976158,
+      "nativeElapsedMs": 14807.5,
+      "bytes": 1349066,
+      "sha256": "1417641c2b6386a585233af4cb1077300441238b484bce60afc9a73751210ab5"
+    }
+  ],
+  "negativeRecords": [
+    {
+      "file": "chrome-over15.webm",
+      "channel": "chrome",
+      "kind": "over15",
+      "version": "155.0.8059.39",
+      "elapsedMs": 16004.599999964237,
+      "bytes": 969402,
+      "sha256": "52d7b5ffadd206549ce90d1d4264dc6d458a32221490282c541f67595c34a9f7"
+    },
+    {
+      "file": "chrome-shortaudio.webm",
+      "channel": "chrome",
+      "kind": "shortaudio",
+      "version": "155.0.8059.39",
+      "elapsedMs": 16010.899999976158,
+      "bytes": 746279,
+      "sha256": "62fbc979b265e1d18e4c2daaf2a3a1f8f8a39459465abc23e93e38e38368cf14"
+    },
+    {
+      "file": "chrome-shortaudio-forged.webm",
+      "channel": "chrome",
+      "kind": "shortaudio-forged",
+      "version": "155.0.8059.39",
+      "elapsedMs": 16010.899999976158,
+      "bytes": 746279,
+      "sha256": "3bd81542d367f65ed3c7566117958bcd0b483ff031a3cc334b9dc68d0d8ace5f"
+    },
+    {
+      "file": "msedge-over15.webm",
+      "channel": "msedge",
+      "kind": "over15",
+      "version": "155.0.4283.45",
+      "elapsedMs": 16008,
+      "bytes": 980280,
+      "sha256": "1050079f27774ec73c04530b9a19b430a828b17db9d683e233720d7440ae6e24"
+    },
+    {
+      "file": "msedge-shortaudio.webm",
+      "channel": "msedge",
+      "kind": "shortaudio",
+      "version": "155.0.4283.45",
+      "elapsedMs": 16013,
+      "bytes": 746279,
+      "sha256": "07e46e4db4c12593d8f200fb0e56a72b441fec0a0ca8896d705db92d131af44d"
+    },
+    {
+      "file": "msedge-shortaudio-forged.webm",
+      "channel": "msedge",
+      "kind": "shortaudio-forged",
+      "version": "155.0.4283.45",
+      "elapsedMs": 16013,
+      "bytes": 746279,
+      "sha256": "79ad2b2c4df12bd9ea7da52fdc8ca2789361e665bc8e1014e6b7b50e3cb9fab1"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+export { submitLocale } from "./transport";

@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--ui-font-family);
+  color: var(--ui-text);
+  background: var(--ui-surface-page);
+}
+button,
+select {
+  font: inherit;
+  padding: 0.5rem;
+}
+a {
+  color: var(--color-terrakota-400);
+}

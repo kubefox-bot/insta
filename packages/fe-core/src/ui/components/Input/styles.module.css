@@ -1,0 +1,12 @@
+.field {
+  composes: field from "../lib/field/styles.module.css";
+}
+.label {
+  composes: label from "../lib/field/styles.module.css";
+}
+.control {
+  composes: control from "../lib/field/styles.module.css";
+}
+.error {
+  composes: error from "../lib/field/styles.module.css";
+}

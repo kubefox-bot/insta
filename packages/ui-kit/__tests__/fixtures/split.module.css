@@ -1,0 +1,8 @@
+.split {
+  display: none;
+}
+@media (--ui-split) {
+  .split {
+    display: block;
+  }
+}

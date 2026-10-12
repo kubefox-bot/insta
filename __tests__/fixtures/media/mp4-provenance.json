@@ -1,0 +1,37 @@
+{
+  "source": "Native MediaRecorder; synthetic camera and microphone; no conversion/remux",
+  "records": [
+    {
+      "path": "__tests__/fixtures/media/chrome-valid.mp4",
+      "channel": "chrome",
+      "version": "155.0.8059.39",
+      "requestedDurationMs": 1200,
+      "mimeType": "video/mp4;codecs=avc1.42001e,mp4a.40.2",
+      "sha256": "a46485f505d008acbdb6020275f7571642a5d499f70e9f065f4ae6c6bd11b780"
+    },
+    {
+      "path": "__tests__/fixtures/media/chrome-long.mp4",
+      "channel": "chrome",
+      "version": "155.0.8059.39",
+      "requestedDurationMs": 15500,
+      "mimeType": "video/mp4;codecs=avc1.42001e,mp4a.40.2",
+      "sha256": "eba80bf85e14851dd1dc22f7370a1cffcacad3d028354928cc867f46e0768687"
+    },
+    {
+      "path": "__tests__/fixtures/media/msedge-valid.mp4",
+      "channel": "msedge",
+      "version": "155.0.4283.45",
+      "requestedDurationMs": 1200,
+      "mimeType": "video/mp4;codecs=avc1.42001e,mp4a.40.2",
+      "sha256": "8f4ec131781f3eafda8441e1400c7328fffb09b5cc6b804e175fa587674332ab"
+    },
+    {
+      "path": "__tests__/fixtures/media/msedge-long.mp4",
+      "channel": "msedge",
+      "version": "155.0.4283.45",
+      "requestedDurationMs": 15500,
+      "mimeType": "video/mp4;codecs=avc1.42001e,mp4a.40.2",
+      "sha256": "616cf5bf8c331beabb1efa79993c3268124f1e16b0de23374e388fd6aab67e70"
+    }
+  ]
+}

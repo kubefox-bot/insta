@@ -1,0 +1,5 @@
+{
+  "extends": "@insta/fe-core/tsconfig",
+  "compilerOptions": { "types": ["bun"] },
+  "include": ["./**/*.ts"]
+}

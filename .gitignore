@@ -1,0 +1,14 @@
+node_modules/
+**/dist/
+.svelte-kit/
+.env
+.env.*
+!.env.example
+.DS_Store
+.superpowers/
+.worktrees/
+playwright-report/
+test-results/
+infra/certs/
+
+.infra/

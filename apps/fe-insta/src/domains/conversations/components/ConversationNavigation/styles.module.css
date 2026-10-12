@@ -1,0 +1,9 @@
+.icon {
+  display: inline-flex;
+  position: relative;
+}
+.indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

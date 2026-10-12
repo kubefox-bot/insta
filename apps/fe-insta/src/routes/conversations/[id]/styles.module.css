@@ -1,0 +1,44 @@
+.thread {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-3);
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  padding: var(--ui-space-3);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.messages > p {
+  margin: 0;
+  color: var(--ui-text-muted);
+  overflow-wrap: anywhere;
+}
+.messages > p[role="alert"] {
+  color: var(--ui-text-error);
+}
+.composer {
+  flex: none;
+  min-width: 0;
+  padding: 0 var(--ui-space-3)
+    max(var(--ui-space-3), env(safe-area-inset-bottom));
+}
+.pending {
+  flex: none;
+  padding: var(--ui-space-3);
+  border: 1px dashed var(--ui-control-border);
+  border-radius: var(--ui-radius-control);
+  background: var(--ui-surface-muted);
+  overflow-wrap: anywhere;
+}
+.pending p {
+  margin-top: 0;
+  white-space: pre-wrap;
+}

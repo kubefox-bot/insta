@@ -1,0 +1,20 @@
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  background: var(--ui-indicator-background);
+  color: var(--ui-indicator-text);
+}
+.dot {
+  width: var(--ui-space-2);
+  height: var(--ui-space-2);
+  border-radius: 50%;
+}
+.count {
+  min-width: var(--ui-space-6);
+  height: var(--ui-space-6);
+  padding-inline: var(--ui-space-2);
+  border-radius: var(--ui-radius-panel);
+  font: var(--font-body-regular-s);
+}

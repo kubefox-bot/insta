@@ -1,0 +1,63 @@
+http:
+  routers:
+    docs-api:
+      rule: Path(`/docs/api`) || PathPrefix(`/docs/api/`)
+      priority: 120
+      entryPoints: [websecure]
+      service: backend
+      middlewares: [security, private, payload, docs-api-prefix]
+      tls: {}
+    docs:
+      rule: Path(`/docs`) || PathPrefix(`/docs/`)
+      priority: 110
+      entryPoints: [websecure]
+      service: backend
+      middlewares: [security, private]
+      tls: {}
+    event:
+      rule: Path(`/event`) || PathPrefix(`/event/`)
+      priority: 100
+      entryPoints: [websecure]
+      service: backend
+      middlewares: [security, private]
+      tls: {}
+    stories:
+      rule: PathPrefix(`/stories/`) && !(Path(`/stories/new`) || PathPrefix(`/stories/new/`))
+      priority: 110
+      entryPoints: [websecure]
+      service: storage
+      middlewares: [security, private]
+      tls: {}
+    api:
+      rule: Path(`/api`) || PathPrefix(`/api/`)
+      priority: 50
+      entryPoints: [websecure]
+      service: frontend
+      middlewares: [security, private, payload]
+      tls: {}
+    frontend:
+      rule: PathPrefix(`/`)
+      priority: 1
+      entryPoints: [websecure]
+      service: frontend
+      middlewares: [security, compress]
+      tls: {}
+  services:
+    backend: {loadBalancer: {servers: [{url: 'http://be-insta:3001'}]}}
+    frontend: {loadBalancer: {servers: [{url: 'http://fe-insta:3000'}]}}
+    storage: {loadBalancer: {passHostHeader: true, servers: [{url: 'http://rustfs:9000'}]}}
+  middlewares:
+    docs-api-prefix: {stripPrefix: {prefixes: [/docs/api]}}
+    payload: {buffering: {maxRequestBodyBytes: 22020096, memRequestBodyBytes: 65536}}
+    compress: {compress: {includedContentTypes: [text/html, text/css, application/javascript, application/json, image/svg+xml]}}
+    private: {headers: {customResponseHeaders: {Cache-Control: no-store}}}
+    security:
+      headers:
+        contentTypeNosniff: true
+        referrerPolicy: same-origin
+        frameDeny: true
+        permissionsPolicy: 'camera=(self), microphone=(self), geolocation=()'
+tls:
+  certificates:
+    - certFile: /certs/localhost.crt
+      keyFile: /certs/localhost.key

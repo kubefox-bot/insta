@@ -1,0 +1,106 @@
+{
+  "sourceRoot": "packages/fe-core/src",
+  "layers": [
+    {
+      "name": "architecture",
+      "root": "packages/fe-core/src/architecture",
+      "allow": ["presets", "source-analysis", "configuration", "git"]
+    },
+    {
+      "name": "api-boundaries",
+      "root": "packages/fe-core/src/api-boundaries",
+      "allow": ["source-analysis", "configuration", "git"]
+    },
+    {
+      "name": "presets",
+      "root": "packages/fe-core/src/presets",
+      "allow": []
+    },
+    {
+      "name": "source-analysis",
+      "root": "packages/fe-core/src/lib/source-analysis",
+      "allow": []
+    },
+    {
+      "name": "git",
+      "root": "packages/fe-core/src/git",
+      "allow": []
+    },
+    {
+      "name": "observability",
+      "root": "packages/fe-core/src/observability",
+      "allow": []
+    },
+    {
+      "name": "configuration",
+      "root": "packages/fe-core/src/lib/configuration",
+      "allow": []
+    },
+    {
+      "name": "ui",
+      "root": "packages/fe-core/src/ui",
+      "allow": []
+    },
+    {
+      "name": "dates",
+      "root": "packages/fe-core/src/dates",
+      "allow": []
+    },
+    {
+      "name": "dragonfly",
+      "root": "packages/fe-core/src/dragonfly",
+      "allow": []
+    },
+    {
+      "name": "lifecycle",
+      "root": "packages/fe-core/src/lifecycle",
+      "allow": []
+    }
+  ],
+  "moduleGroups": [
+    {
+      "root": "packages/fe-core/src/lib",
+      "publicEntrypoints": ["index.ts"],
+      "forbidCycles": true
+    },
+    {
+      "root": "packages/fe-core/src/git",
+      "publicEntrypoints": ["index.ts"],
+      "forbidCycles": true
+    }
+  ],
+  "forbiddenDependencies": [
+    {
+      "source": "packages/fe-core/src/ui/**",
+      "target": "packages/fe-core/src/index.ts"
+    },
+    {
+      "source": "packages/fe-core/src/index.ts",
+      "target": "packages/fe-core/src/ui/**"
+    },
+    {
+      "source": "packages/fe-core/src/ui/**",
+      "target": "packages/fe-core/src/cli.ts"
+    },
+    {
+      "source": "packages/fe-core/src/cli.ts",
+      "target": "packages/fe-core/src/ui/**"
+    },
+    {
+      "source": "packages/fe-core/src/ui/index.ts",
+      "target": "packages/fe-core/src/ui/build/**"
+    },
+    {
+      "source": "packages/fe-core/src/ui/components/**",
+      "target": "packages/fe-core/src/ui/build/**"
+    },
+    {
+      "source": "packages/fe-core/src/ui/tokens/**",
+      "target": "packages/fe-core/src/ui/build/**"
+    },
+    {
+      "source": "packages/fe-core/src/ui/icons/**",
+      "target": "packages/fe-core/src/ui/build/**"
+    }
+  ]
+}

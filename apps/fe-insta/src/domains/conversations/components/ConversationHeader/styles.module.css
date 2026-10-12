@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-3);
+  min-width: 0;
+  flex: none;
+  border-bottom: 1px solid var(--ui-border);
+  padding: var(--ui-space-3) var(--ui-space-4);
+}
+.name {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: var(--font-heading-s);
+}
+@media (--ui-split) {
+  .back {
+    display: none;
+  }
+}

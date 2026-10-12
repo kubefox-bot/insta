@@ -1,0 +1,60 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 0;
+  padding: var(--ui-space-8) var(--ui-space-4);
+  gap: var(--ui-space-6);
+  color: var(--ui-text);
+}
+.welcome h1 {
+  max-width: 42rem;
+  margin: 0;
+  font: var(--font-heading-xl);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.eyebrow {
+  margin: 0;
+  color: var(--color-terrakota-400);
+  font: var(--font-body-medium-m);
+}
+.description {
+  max-width: 31rem;
+  margin: 0;
+  color: var(--ui-text-muted);
+  line-height: 1.6;
+}
+
+.authPanel {
+  width: min(100%, 28rem);
+  margin: var(--ui-space-6) auto;
+  display: grid;
+  gap: var(--ui-space-4);
+  padding: var(--ui-space-6);
+  background: var(--ui-surface-panel);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-panel);
+}
+.authPanel h1 {
+  margin: 0;
+  font: var(--font-heading-s);
+}
+
+.publicationNotice {
+  position: fixed;
+  inset-inline-end: var(--ui-space-4);
+  bottom: var(--ui-space-4);
+  max-width: calc(100vw - var(--ui-space-8));
+  margin: 0;
+  padding: var(--ui-space-3) var(--ui-space-4);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-control);
+  background: var(--ui-surface-panel);
+  color: var(--ui-text);
+  box-shadow: var(--ui-shadow-dialog);
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,171 @@
+name: insta-core
+x-application-logging: &application-logging
+  driver: json-file
+  options: {max-size: 10m, max-file: '3'}
+services:
+  telemetry-receiver:
+    profiles: [telemetry]
+    build: {context: ., target: dependencies}
+    user: bun
+    environment: {HOST: 0.0.0.0, PORT: 4318}
+    command: [bun, infra/otel/main.ts]
+  mongo:
+    image: mongo:8.0.15@sha256:f4d54619262ae3bc6a0a8efbebcef970b87b8ad70697479a75ce308a6f400158
+    entrypoint: [sh, /infra/start.sh]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:?prepare local config}
+    volumes: [mongo-data:/data/db, './infra/mongo:/infra:ro']
+    secrets: [mongo_key]
+    healthcheck:
+      test: [CMD, mongosh, --host, mongo, --quiet, --eval, 'quit(db.adminCommand({ping:1}).ok ? 0 : 1)']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  mongo-init:
+    image: mongo:8.0.15@sha256:f4d54619262ae3bc6a0a8efbebcef970b87b8ad70697479a75ce308a6f400158
+    depends_on: {mongo: {condition: service_healthy}}
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:?}
+      API_MONGO_PASSWORD: ${API_MONGO_PASSWORD:?}
+      WEB_MONGO_PASSWORD: ${WEB_MONGO_PASSWORD:?}
+    volumes: ['./infra/mongo:/infra:ro']
+    secrets: [mongo_users]
+    entrypoint: [mongosh, --host, mongo, --quiet, /infra/init.js]
+  dragonfly:
+    image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.34.2@sha256:d5312167ab5125f916218e71994323800926038eb284e2da8ed41d47e9c2b44e
+    command: ['--proactor_threads=1', '--maxmemory=256mb', '--requirepass=${DRAGONFLY_PASSWORD:?}', '--dir=/data', '--dbfilename=snapshot', '--snapshot_cron=*/5 * * * *', '--logtostderr']
+    volumes: [dragonfly-data:/data]
+    healthcheck:
+      test: [CMD, redis-cli, -a, '${DRAGONFLY_PASSWORD:?}', ping]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  dragonfly-delivery:
+    image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.34.2@sha256:d5312167ab5125f916218e71994323800926038eb284e2da8ed41d47e9c2b44e
+    mem_limit: 1536m
+    command: ['--proactor_threads=1', '--maxmemory=1gb', '--requirepass=${DELIVERY_DRAGONFLY_PASSWORD:?prepare local config}', '--dir=/data', '--dbfilename=snapshot', '--snapshot_cron=*/5 * * * *', '--logtostderr']
+    volumes: [dragonfly-delivery-data:/data]
+    healthcheck:
+      test: [CMD, redis-cli, -a, '${DELIVERY_DRAGONFLY_PASSWORD:?}', ping]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  delivery-broker-init:
+    build: {context: ., target: dependencies}
+    depends_on: {dragonfly-delivery: {condition: service_started}}
+    restart: on-failure
+    environment: {DELIVERY_DRAGONFLY_URL: 'redis://:${DELIVERY_DRAGONFLY_PASSWORD:?}@dragonfly-delivery:6379'}
+    command: [bun, infra/dragonfly/delivery-bootstrap.ts]
+  broker-init:
+    build: {context: ., target: dependencies}
+    depends_on: {dragonfly: {condition: service_healthy}}
+    environment: {DRAGONFLY_URL: 'redis://:${DRAGONFLY_PASSWORD:?}@dragonfly:6379'}
+    command: [bun, infra/dragonfly/bootstrap.ts]
+  mailpit:
+    image: axllent/mailpit:v1.27.10@sha256:b1f1be18af530d939a11ee8820b379e0c88eeec204d904bfad68862adced3a5a
+    ports: ['127.0.0.1:${MAILPIT_PORT:-18025}:8025']
+    environment: {MP_DATABASE: /data/mailpit.db, MP_MAX_MESSAGES: 1000}
+    volumes: [mailpit-data:/data]
+  be-insta:
+    logging: *application-logging
+    build: {context: ., target: backend}
+    ports: ['127.0.0.1:${BE_PORT:-3001}:3001']
+    environment:
+      STORIES_MODE: ${STORIES_MODE:-enabled}
+      STORIES_ACTIVE_PROFILE: ${STORIES_ACTIVE_PROFILE:?prepare local config}
+      STORIES_STORAGE_PROFILES: ${STORIES_STORAGE_PROFILES:?prepare local config}
+      STORIES_MAX_DURATION_MS: ${STORIES_MAX_DURATION_MS:-15000}
+      STORIES_LIFETIME_MS: ${STORIES_LIFETIME_MS:-86400000}
+      HOST: 0.0.0.0
+      PORT: 3001
+      REALTIME_ORIGIN: ${WEB_ORIGIN:-https://localhost}
+      API_MONGO_URL: 'mongodb://insta_api:${API_MONGO_PASSWORD:?}@mongo:27017/insta_api?authSource=insta_api&replicaSet=rs0'
+      DRAGONFLY_URL: 'redis://:${DRAGONFLY_PASSWORD:?}@dragonfly:6379'
+      DELIVERY_DRAGONFLY_URL: 'redis://:${DELIVERY_DRAGONFLY_PASSWORD:?}@dragonfly-delivery:6379'
+      AUTH_SIGNING_KEY: ${AUTH_SIGNING_KEY:?}
+      BFF_SOURCE_SIGNING_KEY: ${BFF_SOURCE_SIGNING_KEY:?prepare local config}
+      MAILPIT_URL: http://mailpit:8025
+      OTEL_RECEIVER_URL: ${OTEL_RECEIVER_URL:-}
+    depends_on: {mongo-init: {condition: service_completed_successfully}, broker-init: {condition: service_completed_successfully}, mailpit: {condition: service_started}}
+    healthcheck:
+      test: [CMD, bun, -e, 'process.exit((await fetch("http://localhost:3001/health/ready")).ok ? 0 : 1)']
+      interval: 5s
+      timeout: 12s
+      retries: 20
+    stop_grace_period: 15s
+  fe-insta:
+    logging: *application-logging
+    build: {context: ., target: frontend}
+    ports: ['127.0.0.1:${FE_PORT:-3000}:3000']
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+      DRAGONFLY_URL: 'redis://:${DRAGONFLY_PASSWORD:?}@dragonfly:6379'
+      ORIGIN: ${WEB_ORIGIN:-https://localhost}
+      BODY_SIZE_LIMIT: 22020096
+      SHUTDOWN_TIMEOUT: 15
+      API_BASE_URL: ${API_BASE_URL:-http://be-insta:3001}
+      STORIES_MODE: ${STORIES_MODE:-enabled}
+      WEB_MONGO_URL: 'mongodb://insta_web:${WEB_MONGO_PASSWORD:?}@mongo:27017/insta_web?authSource=insta_web&replicaSet=rs0'
+      SESSION_ENCRYPTION_KEY: ${SESSION_ENCRYPTION_KEY:?}
+      BFF_SOURCE_SIGNING_KEY: ${BFF_SOURCE_SIGNING_KEY:?prepare local config}
+      TRUSTED_WEB_PROXY_HOST: traefik
+      FARO_RECEIVER_URL: ${FARO_RECEIVER_URL:-}
+    depends_on: {mongo-init: {condition: service_completed_successfully}, broker-init: {condition: service_completed_successfully}}
+    healthcheck:
+      test: [CMD, bun, -e, 'process.exit((await fetch("http://localhost:3000/api/health/live")).ok ? 0 : 1)']
+      interval: 5s
+      timeout: 12s
+      retries: 20
+    stop_grace_period: 15s
+  traefik:
+    image: traefik:v3.5.4@sha256:4df0a50fcf71b454c0d7ad17675776dc8d37359deae3291895bdaa008c1b9972
+    ports: ['127.0.0.1:${HTTP_PORT:-80}:80', '127.0.0.1:${HTTPS_PORT:-443}:443/tcp', '127.0.0.1:${HTTPS_PORT:-443}:443/udp']
+    volumes: ['./infra/traefik/static.yml:/etc/traefik/traefik.yml:ro', './infra/traefik/dynamic.yml:/etc/traefik/dynamic.yml:ro', './infra/certs:/certs:ro']
+  rustfs:
+    profiles: [stories]
+    image: rustfs/rustfs:1.0.1@sha256:1803faef57627e2d9c2e7d89d655d712ddded5389040054987163043fecb6a3c
+    environment:
+      RUSTFS_CONSOLE_ENABLE: false
+      RUSTFS_ACCESS_KEY: ${STORIES_ACCESS_KEY:?prepare local config}
+      RUSTFS_SECRET_KEY: ${STORIES_SECRET_KEY:?prepare local config}
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, http://localhost:9000/health]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    volumes: [stories-storage:/data]
+  stories-init:
+    profiles: [stories]
+    build: {context: ., target: dependencies}
+    depends_on: {rustfs: {condition: service_healthy}}
+    environment:
+      STORIES_MODE: enabled
+      STORIES_ACTIVE_PROFILE: ${STORIES_ACTIVE_PROFILE:?prepare local config}
+      STORIES_STORAGE_PROFILES: ${STORIES_STORAGE_PROFILES:?prepare local config}
+    command: [bun, scripts/infra/stories/provision.ts]
+  testhost:
+    profiles: [test]
+    build: {context: ., target: testhost}
+    environment:
+      STORIES_MODE: disabled
+      API_MONGO_URL: "mongodb://insta_api:${API_MONGO_PASSWORD:?}@mongo:27017/insta_api?authSource=insta_api&replicaSet=rs0"
+      WEB_MONGO_URL: "mongodb://insta_web:${WEB_MONGO_PASSWORD:?}@mongo:27017/insta_web?authSource=insta_web&replicaSet=rs0"
+      DRAGONFLY_URL: "redis://:${DRAGONFLY_PASSWORD:?}@dragonfly:6379"
+      DELIVERY_DRAGONFLY_URL: "redis://:${DELIVERY_DRAGONFLY_PASSWORD:?}@dragonfly-delivery:6379"
+      AUTH_SIGNING_KEY: ${AUTH_SIGNING_KEY:?}
+      SESSION_ENCRYPTION_KEY: ${SESSION_ENCRYPTION_KEY:?}
+      BFF_SOURCE_SIGNING_KEY: ${BFF_SOURCE_SIGNING_KEY:?prepare local config}
+      API_BASE_URL: ${API_BASE_URL:-http://be-insta:3001}
+      MAILPIT_URL: http://mailpit:8025
+volumes:
+  mongo-data: {}
+  dragonfly-data: {}
+  dragonfly-delivery-data: {}
+  mailpit-data: {}
+  stories-storage: {}
+secrets:
+  mongo_key: {file: ./.infra/mongo-key}
+  mongo_users: {file: ./.infra/mongo-users.json}

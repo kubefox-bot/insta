@@ -1,0 +1,51 @@
+.container {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+}
+.mark {
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  color: var(--ui-text-muted);
+  background: transparent;
+  font: inherit;
+  white-space: nowrap;
+}
+.mark[data-message-mark="read"] {
+  color: var(--ui-focus);
+}
+.mark[data-message-mark="error"] {
+  width: var(--ui-target-min);
+  height: var(--ui-target-min);
+  border-radius: var(--ui-radius-control);
+  color: var(--ui-text-error);
+  cursor: help;
+}
+.mark[data-message-mark="error"]:focus-visible {
+  outline: var(--ui-focus-width) solid currentColor;
+  outline-offset: calc(-1 * var(--ui-focus-width));
+}
+.tooltip {
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  right: 0;
+  width: max-content;
+  max-width: min(16rem, 65vw);
+  padding: var(--ui-space-2);
+  border: 1px solid var(--ui-control-border);
+  border-radius: var(--ui-radius-control);
+  color: var(--ui-text);
+  background: var(--ui-surface-panel);
+  font: var(--font-body-regular-xs);
+  text-align: start;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}

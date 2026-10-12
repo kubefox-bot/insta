@@ -1,0 +1,75 @@
+.shell {
+  min-height: 100dvh;
+  font-family: var(--ui-font-family);
+  color: var(--ui-text);
+  background: var(--ui-surface-page);
+}
+.workspace {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  overflow: hidden;
+}
+.globalHeader,
+.storyRail {
+  flex: none;
+}
+.publicRail {
+  padding-inline: var(--ui-space-3);
+}
+.accountStatus {
+  max-width: 12rem;
+  font: var(--font-body-regular-s);
+}
+.accountStatus {
+  overflow-wrap: anywhere;
+  color: var(--ui-text-muted);
+}
+.main {
+  max-width: 88rem;
+  margin: auto;
+  padding: var(--ui-space-6);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 55vh;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.workspace .main {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding: var(--ui-space-3);
+}
+@media (--ui-compact) {
+  .main {
+    padding: var(--ui-space-2);
+  }
+  .workspace:not(.detail) {
+    height: auto;
+    overflow: visible;
+  }
+  .detail .globalHeader,
+  .detail .storyRail {
+    display: none;
+  }
+  .detail .main {
+    padding: 0;
+  }
+  .detail {
+    padding-top: env(safe-area-inset-top);
+  }
+  .workspace:not(.detail) .main {
+    flex: none;
+    overflow: visible;
+  }
+}
+
+.intentActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ui-space-2);
+  padding: var(--ui-space-3) var(--ui-space-6);
+}

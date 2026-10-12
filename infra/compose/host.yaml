@@ -1,0 +1,30 @@
+x-host-labels: &host-labels
+  insta.runtime-mode: host
+  insta.host-settings: ${INSTA_HOST_SETTINGS:?host dev command required}
+services:
+  mongo:
+    labels: *host-labels
+    ports: ['127.0.0.1:${HOST_MONGO_PORT:-27017}:27017']
+  dragonfly:
+    labels: *host-labels
+    ports: ['127.0.0.1:${HOST_DRAGONFLY_PORT:-6379}:6379']
+  dragonfly-delivery:
+    labels: *host-labels
+    ports: ['127.0.0.1:${HOST_DELIVERY_DRAGONFLY_PORT:-6380}:6379']
+  delivery-broker-init:
+    labels: *host-labels
+  mailpit:
+    labels: *host-labels
+    command: ['--smtp-disable-rdns']
+    ports: ['127.0.0.1:${HOST_SMTP_PORT:-1025}:1025']
+  rustfs:
+    labels: *host-labels
+    ports: ['127.0.0.1:9000:9000']
+  mongo-init:
+    labels: *host-labels
+  broker-init:
+    labels: *host-labels
+  traefik:
+    labels: *host-labels
+    extra_hosts: ['host.docker.internal:host-gateway']
+    volumes: ['${HOST_PROXY_CONFIG:?host dev command required}:/etc/traefik/dynamic.yml:ro', '${HOST_PROXY_STATIC_CONFIG:?host dev command required}:/etc/traefik/traefik.yml:ro']

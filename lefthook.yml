@@ -1,0 +1,19 @@
+no_auto_install: true
+assert_lefthook_installed: true
+
+min_version: 2.1.12
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      run: bun run lint
+    boundaries:
+      run: bun run lint:boundaries
+    typecheck:
+      run: bun run typecheck
+commit-msg:
+  jobs:
+    - name: validate-commit
+      script: validate-commit.ts
+      runner: bun
+      args: '"{1}"'

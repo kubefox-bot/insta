@@ -1,0 +1,13 @@
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-1);
+}
+.controls button[aria-pressed="true"] {
+  background: var(--ui-surface-selected);
+  border-color: var(--color-terrakota-400);
+}
+.controls span {
+  font: var(--font-body-regular-xs);
+  max-width: 12rem;
+}

@@ -1,0 +1,87 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: var(--ui-target-min);
+  min-width: var(--ui-target-min);
+  border: 1px solid transparent;
+  border-radius: var(--ui-radius-control);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--ui-transition-duration),
+    color var(--ui-transition-duration);
+}
+.root:focus-visible {
+  outline: var(--ui-focus-width) solid var(--ui-focus);
+  outline-offset: var(--ui-focus-offset);
+}
+.root:disabled,
+.root[data-disabled] {
+  cursor: default;
+}
+.root[data-size="sm"] {
+  padding: var(--ui-button-padding-y-sm) var(--ui-button-padding-x-sm);
+  font: var(--ui-button-font-sm);
+}
+.root[data-size="md"] {
+  padding: var(--ui-button-padding-y-md) var(--ui-button-padding-x-md);
+  font: var(--ui-button-font-md);
+}
+.root[data-size="lg"] {
+  padding: var(--ui-button-padding-y-lg) var(--ui-button-padding-x-lg);
+  font: var(--ui-button-font-lg);
+}
+.root[data-variant="primary"] {
+  background: var(--button-primary-bg);
+  color: var(--button-primary-color);
+}
+.root[data-variant="primary"]:hover {
+  background: var(--button-primary-bg-hover);
+}
+.root[data-variant="primary"]:active {
+  background: var(--button-primary-bg-pressed);
+}
+.root[data-variant="primary"]:disabled,
+.root[data-variant="primary"][data-disabled] {
+  background: var(--button-primary-bg-disabled);
+  color: var(--button-primary-color-disabled);
+}
+.root[data-variant="secondary"] {
+  background: transparent;
+  border: var(--button-secondary-border);
+  color: var(--button-secondary-color);
+}
+.root[data-variant="secondary"]:hover {
+  border: var(--button-secondary-border-hover);
+  color: var(--button-secondary-color-hover);
+}
+.root[data-variant="secondary"]:active {
+  border: var(--button-secondary-border-pressed);
+  color: var(--button-secondary-color-pressed);
+}
+.root[data-variant="secondary"]:disabled,
+.root[data-variant="secondary"][data-disabled] {
+  border: var(--button-secondary-border-disabled);
+  color: var(--button-secondary-color-disabled);
+}
+.root[data-variant="text"] {
+  background: transparent;
+  color: var(--button-text-color);
+}
+.root[data-variant="text"]:hover {
+  color: var(--button-text-color-hover);
+}
+.root[data-variant="text"]:active {
+  color: var(--button-text-color-pressed);
+}
+.root[data-variant="text"]:disabled,
+.root[data-variant="text"][data-disabled] {
+  color: var(--button-text-color-disabled);
+}
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+}

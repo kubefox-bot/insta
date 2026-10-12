@@ -1,0 +1,8 @@
+.compact {
+  display: none;
+}
+@media (--ui-compact) {
+  .compact {
+    display: block;
+  }
+}

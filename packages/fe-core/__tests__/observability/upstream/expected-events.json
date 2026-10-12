@@ -1,0 +1,33 @@
+{
+  "started": {
+    "type": "operation",
+    "operation": "login",
+    "operation_id": "11111111-1111-4111-8111-111111111111",
+    "phase": "started",
+    "outcome": "attempted"
+  },
+  "succeeded": {
+    "type": "operation",
+    "operation": "login",
+    "operation_id": "11111111-1111-4111-8111-111111111111",
+    "phase": "completed",
+    "outcome": "succeeded",
+    "code": "LOGIN_SUCCEEDED",
+    "retryable": false,
+    "result_unknown": false
+  },
+  "missingOutcome": {
+    "type": "violation",
+    "operation": "login",
+    "operation_id": "11111111-1111-4111-8111-111111111111",
+    "code": "missing_outcome"
+  },
+  "analyticsInvoked": {
+    "type": "analytics_dispatch",
+    "provider": "yandex_metrika",
+    "operation": "login",
+    "operation_id": "11111111-1111-4111-8111-111111111111",
+    "goal": "login_success",
+    "dispatch_status": "invoked"
+  }
+}

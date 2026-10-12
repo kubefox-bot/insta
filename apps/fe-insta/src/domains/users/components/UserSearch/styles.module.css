@@ -1,0 +1,44 @@
+.search {
+  min-width: 0;
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--ui-space-2);
+  min-width: 0;
+}
+.field {
+  position: relative;
+  min-width: 0;
+}
+.field :global(label) {
+  position: absolute;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.input {
+  padding-right: calc(var(--ui-target-min) + var(--ui-space-2));
+  appearance: none;
+}
+.input::-webkit-search-cancel-button {
+  display: none;
+}
+.clear {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: var(--ui-target-min);
+  height: var(--ui-target-min);
+  padding: 0;
+  transform: translateY(-50%);
+}
+.clear:disabled {
+  visibility: hidden;
+}
+.submit {
+  width: var(--ui-target-min);
+  height: var(--ui-target-min);
+  padding: 0;
+}

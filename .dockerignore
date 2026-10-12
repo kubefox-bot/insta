@@ -1,0 +1,13 @@
+.git
+node_modules
+**/node_modules
+**/dist
+**/.svelte-kit
+.env
+.env.*
+.superpowers
+infra/certs
+.infra
+
+docs/superpowers
+docs/audits/2026-10-12-api-modules-media

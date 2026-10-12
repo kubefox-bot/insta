@@ -1,0 +1,9 @@
+{
+  "extends": "@insta/fe-core/tsconfig",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "types": ["bun"]
+  },
+  "include": ["src/**/*.ts", "__tests__/**/*.ts"]
+}

@@ -1,0 +1,81 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ui-layer-overlay);
+  background: var(--ui-overlay);
+}
+.dialog {
+  position: fixed;
+  z-index: var(--ui-layer-dialog);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  width: min(var(--ui-dialog-width), calc(100% - var(--ui-space-8)));
+  max-height: calc(100dvh - var(--ui-space-8));
+  overflow-y: auto;
+  display: grid;
+  gap: var(--ui-space-4);
+  padding: var(--ui-space-6);
+  border-radius: var(--ui-radius-panel);
+  background: var(--ui-surface-panel);
+  color: var(--ui-text);
+  box-shadow: var(--ui-shadow-dialog);
+  font: var(--font-body-regular-m);
+}
+.title {
+  margin: 0;
+  font: var(--font-heading-s);
+}
+.description {
+  margin: 0;
+  color: var(--ui-text-muted);
+}
+
+.headerClose {
+  display: flex;
+  justify-content: flex-end;
+}
+.desktopClose,
+.mobileBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-space-2);
+  min-width: var(--ui-target-min);
+  min-height: var(--ui-target-min);
+  border: 0;
+  border-radius: var(--ui-radius-control);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.desktopClose:focus-visible,
+.mobileBack:focus-visible {
+  outline: var(--ui-focus-width) solid var(--ui-focus);
+  outline-offset: var(--ui-focus-offset);
+}
+.mobileBack {
+  display: none;
+}
+@media (--ui-compact) {
+  .responsive {
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    transform: none;
+    border-radius: 0;
+    align-content: start;
+  }
+  .headerClose {
+    justify-content: flex-start;
+  }
+  .desktopClose {
+    display: none;
+  }
+  .mobileBack {
+    display: flex;
+  }
+}

@@ -1,0 +1,9 @@
+.recorder {
+  display: grid;
+  gap: var(--ui-space-4);
+  min-width: 0;
+}
+.recorder p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,11 @@
+.metadata {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  font: var(--font-body-regular-xs);
+  color: var(--ui-text-muted);
+  margin-top: var(--ui-space-1);
+  white-space: nowrap;
+}
